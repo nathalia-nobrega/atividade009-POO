@@ -41,8 +41,9 @@ def add_professors_and_disciplines(department: Department, university: Universit
             department=department,
             university=university
         )
-        professors.append(professor)
-        department.professors.append(professor)  # Adiciona o professor ao departamento
+        if professor not in professors:
+            professors.append(professor)
+        #department.professors.append(professor)  # Adiciona o professor ao departamento
 
     # Associa disciplinas aos professores
     for j, discipline_name in enumerate(discipline_pool):
@@ -52,7 +53,7 @@ def add_professors_and_disciplines(department: Department, university: Universit
             department=department,
             university=university
         )
-        department.disciplines.append(discipline)  # Adiciona a disciplina ao departamento
+        #department.disciplines.append(discipline)  # Adiciona a disciplina ao departamento
 
         # Atribui a disciplina a um professor aleatório
         assigned_professor = random.choice(professors)
