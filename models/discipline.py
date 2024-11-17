@@ -1,11 +1,8 @@
 from typing import List
 
-from models.department import Department
-from models.university import University
-
 
 class Discipline:
-    def __init__(self, code: int, name: str, department: Department, university: University):
+    def __init__(self, code: int, name: str, department: 'Department', university: 'University'):
         self.code = code
         self.name = name
         self.professors: List['Professor'] = []
@@ -14,18 +11,26 @@ class Discipline:
         department.disciplines.append(self)
         university.disciplines.append(self)
 
-    def get_department(self) -> Department:
+    def get_department(self) -> 'Department':
         return self.department
 
     def list_professors(self) -> List['Professor']:
         return self.professors
 
-    def get_university(self) -> University:
-        return self.university
+    def delete(self):
+        self.department.disciplines.remove(self)
+        self.university.disciplines.remove(self)
+        for professor in self.professors:
+            if self in professor.disciplines:
+                professor.disciplines.remove(self)
+        print(f"\tDisciplina {self.name} foi removida do departamento {self.department.name} e da universidade {self.university.name}.")
 
     def display_discipline_info(self):
-        print(f"\nDisciplina: {self.name}")
-        print(f"  Departamento: {self.get_department().name}")
-        print("  Professores:")
+        print(f"\n\tDisciplina: {self.name}")
+        if self.get_department() is not None:
+            print(f"\t\tDepartamento: {self.get_department().name}")
+        else:
+            print(f"\t\tDepartamento: N/A")
+        print("\t\tProfessores:")
         for professor in self.list_professors():
-            print(f"    - {professor.name}")
+            print(f"\t\t    - {professor.name}")

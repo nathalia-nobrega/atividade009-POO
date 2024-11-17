@@ -17,3 +17,19 @@ class University:
 
     def list_disciplines(self) -> List['Discipline']:
         return self.disciplines
+
+    def delete(self):
+        # Remove todas as relações com a universidade
+        for professor in list(self.list_professors()):
+            professor.delete()
+        self.professors.clear()
+
+        for department in self.departments:
+            department.delete()
+        self.departments.clear()
+
+        # for discipline in self.list_disciplines():
+        #     discipline.delete()
+        self.disciplines.clear()
+
+        print(f"\tUniversidade {self.name} foi deletada junto com suas entidades relacionadas.")
