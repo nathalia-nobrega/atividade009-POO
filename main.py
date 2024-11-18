@@ -62,20 +62,20 @@ def main():
 
     # Testando DELEÇÃO
 
-    print("\n\t===== Demonstração de deleção =====")
+    print("\n=========== Demonstração de deleção =============")
 
     # DELETE: PROFESSOR
-    print("\n\tOPERAÇÃO 001: Deletar PROFESSOR João...")
+    print("\nOPERAÇÃO 001: Deletar PROFESSOR João...")
     prof_joao.delete()
 
-    print("\n\t===== [DEPOIS DA DELEÇÃO DE PROFESSOR] Disciplinas da Universidade =====")
+    print("\n========== [DEPOIS DA DELEÇÃO DE PROFESSOR] Disciplinas da Universidade ===========")
     for discipline in uea_est.list_disciplines():
         discipline.display_discipline_info()
 
     print("\n\tOPERAÇÃO 002: Deletar DISCIPLINA Matemática Discreta...")
     discipline_md.delete()
 
-    print("\n\t===== [LISTA DE DISCIPLINAS DEPOIS DA DELEÇÃO DA DISCIPLINA] =====")
+    print("\n===== [LISTA DE DISCIPLINAS DEPOIS DA DELEÇÃO DA DISCIPLINA] =====")
     for discipline in uea_est.list_disciplines():
         discipline.display_discipline_info()
 
@@ -83,7 +83,7 @@ def main():
     print("\n\tOPERAÇÃO 003: Deletar o DEPARTAMENTO de Engenharia da Computação...")
     dept_comp.delete()
 
-    print("\n\t===== [LISTA DE DISCIPLINAS DEPOIS DA DELEÇÃO DO DEPARTAMENTO] =====")
+    print("\n===== [LISTA DE DISCIPLINAS DEPOIS DA DELEÇÃO DO DEPARTAMENTO] =====")
     for discipline in uea_est.list_disciplines():
         discipline.display_discipline_info()
 
@@ -103,5 +103,5 @@ def main():
     for discipline in uea_est.list_disciplines():
         discipline.display_discipline_info()
 
-if __name__ == "main":
+if __name__ == "__main__":
     main()
